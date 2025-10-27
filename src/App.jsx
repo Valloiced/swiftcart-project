@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Toaster } from 'react-hot-toast';
 import { AuthProvider } from './contexts/AuthContext';
 import { CartProvider } from './contexts/CartContext';
 import { ToastProvider } from './contexts/ToastContext';
@@ -22,6 +23,28 @@ function App() {
         <CartProvider>
           <Router>
             <div className="min-h-screen bg-gray-50 flex flex-col">
+              <Toaster 
+                position="top-right"
+                toastOptions={{
+                  duration: 3000,
+                  style: {
+                    background: '#363636',
+                    color: '#fff',
+                  },
+                  success: {
+                    duration: 3000,
+                    style: {
+                      background: '#10b981',
+                    },
+                  },
+                  error: {
+                    duration: 4000,
+                    style: {
+                      background: '#ef4444',
+                    },
+                  },
+                }}
+              />
               <Navbar />
               <main className="flex-1 container mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-24 py-8">
                 <Routes>
