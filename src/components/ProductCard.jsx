@@ -11,10 +11,7 @@ const ProductCard = ({ product }) => {
     e.preventDefault();
     e.stopPropagation();
     addToCart(product, 1);
-    // Navigate to products page after adding to cart
-    setTimeout(() => {
-      navigate('/products');
-    }, 1000);
+    // Don't navigate - let the user continue browsing or choose to view cart
   };
 
   return (

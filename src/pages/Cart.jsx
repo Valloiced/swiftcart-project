@@ -6,7 +6,7 @@ import { useCart } from  '../contexts/CartContext';
 
 const  Cart  = () => {
 
-const { cartItems, updateQuantity, removeItem, getTotal, isLoading } =  useCart();
+const { cartItems, updateQuantity, removeFromCart, getTotal, isLoading } =  useCart();
 
   
 
@@ -20,9 +20,10 @@ const  total  =  subtotal  +  shipping  +  tax;
 
   
 
-const  availableItems  =  cartItems.filter(item  =>  item.quantity  >  0);
+// Filter items by stock status
+const  availableItems  =  cartItems.filter(item  =>  item.inStock !== false);
 
-const  unavailableItems  =  cartItems.filter(item  =>  item.quantity  <=  0);
+const  unavailableItems  =  cartItems.filter(item  =>  item.inStock === false);
 
   
 
@@ -148,7 +149,7 @@ ${(item.price * item.quantity).toFixed(2)}
 
 <button
 
-onClick={() =>  removeItem(item.id)}
+onClick={() =>  removeFromCart(item.id)}
 
 className="text-red-600 hover:text-red-800 text-sm"
 
@@ -220,7 +221,7 @@ ${(item.price * item.quantity).toFixed(2)}
 
 <button
 
-onClick={() =>  removeItem(item.id)}
+onClick={() =>  removeFromCart(item.id)}
 
 className="text-red-600 hover:text-red-800 text-sm"
 
